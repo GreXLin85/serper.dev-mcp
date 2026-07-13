@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "description": "Model Context Protocol server for Serper.dev search and scraping APIs",
   "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "bin": {
     "serper-dev-mcp": "dist/index.js"
   },
@@ -20,6 +22,23 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "serper",
+    "google-search",
+    "search",
+    "scraping"
+  ],
+  "author": "GreXLin85",
+  "homepage": "https://github.com/GreXLin85/serper.dev-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/GreXLin85/serper.dev-mcp/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GreXLin85/serper.dev-mcp.git"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
