@@ -85,10 +85,11 @@ describe('SerperClient', () => {
       fetch,
       timeoutMs: 1_000,
     }).request('search', { q: 'apple' });
+    const rejection = expect(request).rejects.toMatchObject({ code: 'timeout' });
 
     await vi.advanceTimersByTimeAsync(1_000);
 
-    await expect(request).rejects.toMatchObject({ code: 'timeout' });
+    await rejection;
   });
 
   it('maps network errors without copying their potentially sensitive text', async () => {
