@@ -387,7 +387,7 @@ Run:
 ```bash
 git status --short
 git ls-files
-git grep -n '[REDACTED]' -- . ':!requests'
+git grep -nE '([[:xdigit:]]{40}|[A-Za-z0-9_=-]{48,})' -- . ':!requests' ':!package-lock.json'
 ```
 
 Expected: only intended package files are tracked; `requests` is ignored; the exposed key is absent from tracked files.
