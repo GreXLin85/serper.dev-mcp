@@ -6,8 +6,6 @@ The server requires Node.js 20 or newer and a Serper.dev API key. Every request 
 
 ## Tools
 
-The package deliberately does not expose Scholar because that endpoint is not working, and it does not provide batch tools.
-
 | MCP tool | Serper endpoint | Purpose | Required parameters |
 | --- | --- | --- | --- |
 | `serper_search` | `search` | Google web results | `q` |
