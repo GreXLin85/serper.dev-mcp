@@ -91,18 +91,21 @@ describe('Serper MCP tools', () => {
   });
 
   it('rejects a missing search query before calling Serper', async () => {
-    await expect(
-      client.callTool({ name: 'serper_search', arguments: {} }),
-    ).rejects.toThrow();
+    const result = await client.callTool({ name: 'serper_search', arguments: {} });
+
+    expect(result).toMatchObject({ isError: true });
     expect(request).not.toHaveBeenCalled();
   });
 
   it.each(['serper_lens', 'serper_scrape'])(
     'rejects non-http URLs for %s',
     async (name) => {
-      await expect(
-        client.callTool({ name, arguments: { url: 'file:///etc/passwd' } }),
-      ).rejects.toThrow();
+      const result = await client.callTool({
+        name,
+        arguments: { url: 'file:///etc/passwd' },
+      });
+
+      expect(result).toMatchObject({ isError: true });
       expect(request).not.toHaveBeenCalled();
     },
   );
@@ -111,7 +114,9 @@ describe('Serper MCP tools', () => {
     ['serper_maps', {}],
     ['serper_reviews', {}],
   ])('enforces specialized identifier requirements for %s', async (name, args) => {
-    await expect(client.callTool({ name, arguments: args })).rejects.toThrow();
+    const result = await client.callTool({ name, arguments: args });
+
+    expect(result).toMatchObject({ isError: true });
     expect(request).not.toHaveBeenCalled();
   });
 
