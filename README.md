@@ -86,6 +86,17 @@ npm run build
 SERPER_API_KEY=YOUR_KEY node dist/index.js
 ```
 
+## Container deployment
+
+The included Dockerfile builds the package with pnpm and exposes the stdio server as Streamable HTTP through Supergateway:
+
+```bash
+docker build -t serper-dev-mcp .
+docker run --rm -p 8000:8000 -e SERPER_API_KEY=YOUR_KEY serper-dev-mcp
+```
+
+The MCP endpoint is `/mcp` on port `8000`; `/healthz` is available for container health checks. Add authentication at the reverse-proxy or platform layer before exposing the container publicly.
+
 Offline project checks:
 
 ```bash
