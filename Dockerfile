@@ -31,4 +31,4 @@ COPY --from=build /app/dist ./dist
 
 EXPOSE 8000
 
-CMD ["supergateway", "--stdio", "node /app/dist/index.js", "--outputTransport", "streamableHttp", "--port", "8000", "--streamableHttpPath", "/mcp", "--healthEndpoint", "/healthz", "--logLevel", "info"]
+CMD ["node", "dist/remote.js"]

@@ -92,10 +92,13 @@ The included Dockerfile builds the package with pnpm and exposes the stdio serve
 
 ```bash
 docker build -t serper-dev-mcp .
-docker run --rm -p 8000:8000 -e SERPER_API_KEY=YOUR_KEY serper-dev-mcp
+docker run --rm -p 8000:8000 \
+  -e SERPER_API_KEY=YOUR_KEY \
+  -e MCP_BASIC_PASSWORD=YOUR_REMOTE_PASSWORD \
+  serper-dev-mcp
 ```
 
-The MCP endpoint is `/mcp` on port `8000`; `/healthz` is available for container health checks. Add authentication at the reverse-proxy or platform layer before exposing the container publicly.
+The MCP endpoint is `/mcp` on port `8000`; `/healthz` is available without authentication for container health checks. MCP traffic requires HTTP Basic authentication. The username defaults to `mcp` and can be changed with `MCP_BASIC_USERNAME`; `MCP_BASIC_PASSWORD` is required.
 
 Offline project checks:
 
