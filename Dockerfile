@@ -1,7 +1,7 @@
 FROM node:22-alpine AS build
 
 ENV PNPM_HOME=/pnpm
-ENV PATH=/pnpm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV PATH=/pnpm/bin:/pnpm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 RUN npm install --global pnpm@11.9.0
 
@@ -18,7 +18,7 @@ FROM node:22-alpine
 
 ENV NODE_ENV=production
 ENV PNPM_HOME=/pnpm
-ENV PATH=/pnpm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV PATH=/pnpm/bin:/pnpm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 RUN npm install --global pnpm@11.9.0 \
     && pnpm add --global supergateway@3.4.3
