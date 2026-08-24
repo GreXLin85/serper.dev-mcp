@@ -1,6 +1,7 @@
 {
   "name": "serper-dev-mcp",
   "version": "0.1.0",
+  "packageManager": "pnpm@11.9.0",
   "description": "Model Context Protocol server for Serper.dev search and scraping APIs",
   "type": "module",
   "main": "dist/index.js",
